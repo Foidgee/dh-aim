@@ -1,0 +1,34 @@
+function AimLockSettings.AimLockPosition(CameraMode)
+    -- // Vars
+    local Position
+    local BeizerData = {}
+
+    -- // Hit to account prediction
+    local Hit = DaHoodSettings.ApplyPredictionFormula(AimingSelected.Part)
+    local HitPosition = Hit.Position
+
+    -- //
+    if (CameraMode) then
+        Position = HitPosition
+    else
+        -- // Convert 3d -> 2d
+        local Vector, _ = CurrentCamera:WorldToViewportPoint(HitPosition)
+        local Vector2D = Vector2.new(Vector.X, Vector.Y)
+
+        -- // Vars
+        local BeizerLock = DaHoodSettings.BeizerLock
+
+        -- //
+        Position = Vector2D
+        BeizerData = {
+            Smoothness = BeizerLock.Smoothness,
+            CurvePoints = BeizerLock.CurvePoints
+        }
+    end
+
+    -- // Return
+    return Position, BeizerData
+end
+
+-- // Return
+return DaHoodSettings
