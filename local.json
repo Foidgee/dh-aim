@@ -1,0 +1,8 @@
+-- // Dependencies
+local Aiming = loadstring(game:HttpGet("https://github.com/Foidgee/dh-aim/edit/main/local.sjon"))()
+local AimingChecks = Aiming.Checks
+local AimingSelected = Aiming.Selected
+local AimLockSettings = Aiming.AimLock
+
+-- // Services
+local Workspace = game:GetService("Workspace")
